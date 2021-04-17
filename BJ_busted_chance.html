@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
+	<script type="text/javascript" src='scripts/combinations.js'> </script>
 </head>
 
 <body>
@@ -16,12 +17,14 @@
 	<button onclick="pHit()" id="hit">Hit me</button>
 	<button onclick="pStand()" id="stand">Stand</button>
 	<!-- script starts here-->
+
 	<script>
 		var suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
 		var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 		var deck = new Array();
 		playerHand = new Array();
 		houseHand = new Array();
+
 		function createDeck() {
 			deck = new Array();
 			for (var i = 0; i < values.length; i++) {
@@ -36,6 +39,7 @@
 				}
 			}
 		}
+
 		//Note that the deck is now ordered and have not been shuffled yet
 		function shuffle() {
 			for (var i = 0; i < 1000; i++) //switch the location of the card for 1000 times
@@ -195,6 +199,32 @@
 			document.getElementById("stand").disabled = resolved;
 			//show all cards and points
 			updateUI();
+		}
+
+		function bustedProbability(deckCards, playerCards) {
+			//this if for calculating chance of getting busted
+			// need to input both the remainning card in the deck
+			// and card in the player hand
+			// The output is a possible combination of card dealt cards
+			// together with cards on playerHand
+			
+			weightInHand = getValue(playerCards); 
+			// This part calculate weight in player hand
+
+			
+			possibleValues = [];
+			possibilities = 0; //for counting #possibilities
+			busted = 0; //for counting #busted scenarios
+			console.log(deckCards.length);
+			for(i=0; i<deckCards.length; i++){
+				tempCards = playerCards; //for storing card in each scenario
+				tempCards.push(deckCards[i]) //dealt a card to hand
+				aPossibleValue = getValue(tempCards);
+				possibleValues.push(getValue(tempCards));
+				possibilities+=1;
+				if(aPossibleValue>21){busted+=1;}
+			}
+			return(busted/possibilities);
 		}
 	</script>
 </body>

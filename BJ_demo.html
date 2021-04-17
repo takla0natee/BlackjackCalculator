@@ -1,201 +1,202 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-</head>
-<body>
-<button onclick="startBJ()">Deal</button>
-<!--Here lies the UI section-->
-<p id="playerUI">Player has: </p><p id="playerPoints">points: </p><br>
-<p id="houseUI">House has: </p><p id="housePoints">points: </p><br>
-<p id="result">Result: </p><br>
-<button onclick="pHit()" id="hit">Hit me</button>
-<button onclick="pStand()" id="stand">Stand</button>
-<!-- script starts here-->
-	<script>
-		var suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
-		var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-		var deck = new Array();
-		playerHand = new Array();
-		houseHand = new Array();
-		function createDeck()
-		{
-			deck = new Array();
-			for (var i = 0 ; i < values.length; i++)
-			{
-				for(var x = 0; x < suits.length; x++)
-				{
-					var weight = parseInt(values[i]);//assign weight to each card return NaN for JQKA
-					if (values[i] == "J" || values[i] == "Q" || values[i] == "K")
-						weight = 10;
-					if (values[i] == "A")
-						weight = 1; //we'll talk about value of ACE more in value function
-					var card = { Value: values[i], Suit: suits[x], Weight: weight }; //create a card
-					deck.push(card); //push the card into the deck
-				}
-			}
-		}	
-		//Note that the deck is now ordered and have not been shuffled yet
-		function shuffle()
-		{
-			for (var i = 0; i < 1000; i++) //switch the location of the card for 1000 times
-			{
-				var location1 = Math.floor((Math.random() * deck.length));
-				var location2 = Math.floor((Math.random() * deck.length));
-				var tmp = deck[location1];
 
-				deck[location1] = deck[location2];
-				deck[location2] = tmp;
-			}
-		}
-		function updateUI(){
-			//If the game is resolved, then show all the cards.
-			//If the game is not resolved, then show only one cards for the house.
-			if(resolved){
-				player = "";
-				house = "";
-				pPoint = "";
-				hPoint = "";
-				//this loop is for showing all the cards in the player's hand
-				for(let i = 0; i < playerHand.length;){
-					player += playerHand[i].Value;
-					player += " ";
-					player += playerHand[i].Suit;
-					player += ", ";
-					i++;
-				}
-				for(let i = 0; i < houseHand.length;){
-					house += houseHand[i].Value;
-					house += " ";
-					house += houseHand[i].Suit;
-					house += ", ";
-					i++;
-				}
-				document.getElementById("playerUI").innerHTML = "Player has: "+player;
-				document.getElementById("houseUI").innerHTML = "House has: "+house;
-				document.getElementById("playerPoints").innerHTML = "Points: "+getValue(playerHand);
-				document.getElementById("housePoints").innerHTML = "Points: "+getValue(houseHand);
-			}
-			else{
-				player = "";
-				house = "";
-				pPoint = "";
-				hPoint = "";
-				for(let i = 0; i < playerHand.length;){
-					player += playerHand[i].Value;
-					player += " ";
-					player += playerHand[i].Suit;
-					player += ", ";
-					i++;
-				}
-				//show only one card from the house if the game is not resolved.
-				house += houseHand[0].Value;
-				house += " ";
-				house += houseHand[0].Suit;
-				house += ", "; 
-				document.getElementById("playerUI").innerHTML = "Player has: "+player;
-				document.getElementById("houseUI").innerHTML = "House has: "+house;
-				document.getElementById("playerPoints").innerHTML = "Points: "+getValue(playerHand);
-				document.getElementById("housePoints").innerHTML = "Points: "
-			}
-		}
-		function startBJ(){
-			//this variable is used to determine if the game has ended or not
-			resolved = false; 
-			//re-enable the buttons
-			document.getElementById("hit").disabled = resolved;
-			document.getElementById("stand").disabled = resolved;
-			//clear the UI
-			document.getElementById("result").innerHTML="Result: "
-			//create a deck and shuffle it
-			createDeck();
-			shuffle();
-			playerHand = new Array();
-			houseHand = new Array();
-			//pop() method removes the element that have the highest index from the array and return it
-			//deal the card to the house and the player
-			for (let i = 0; i < 2; i++){
-				var card = deck.pop();
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <button onclick="startBJ()">Deal</button>
+    <!--Here lies the UI section-->
+    <p id="playerUI">Player has: </p>
+    <p id="playerPoints">points: </p><br>
+    <p id="houseUI">House has: </p>
+    <p id="housePoints">points: </p><br>
+    <p id="result">Result: </p><br>
+    <button onclick="pHit()" id="hit">Hit me</button>
+    <button onclick="pStand()" id="stand">Stand</button>
+    <!-- script starts here-->
+    <script>
+        var suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
+        var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+        var deck = new Array();
+        playerHand = new Array();
+        houseHand = new Array();
+        function createDeck() {
+            deck = new Array();
+            for (var i = 0; i < values.length; i++) {
+                for (var x = 0; x < suits.length; x++) {
+                    var weight = parseInt(values[i]);//assign weight to each card return NaN for JQKA
+                    if (values[i] == "J" || values[i] == "Q" || values[i] == "K")
+                        weight = 10;
+                    if (values[i] == "A")
+                        weight = 1; //we'll talk about value of ACE more in value function
+                    var card = { Value: values[i], Suit: suits[x], Weight: weight }; //create a card
+                    deck.push(card); //push the card into the deck
+                }
+            }
+        }
+        //Note that the deck is now ordered and have not been shuffled yet
+        function shuffle() {
+            for (var i = 0; i < 1000; i++) //switch the location of the card for 1000 times
+            {
+                var location1 = Math.floor((Math.random() * deck.length));
+                var location2 = Math.floor((Math.random() * deck.length));
+                var tmp = deck[location1];
+
+                deck[location1] = deck[location2];
+                deck[location2] = tmp;
+            }
+        }
+        function updateUI() {
+            //If the game is resolved, then show all the cards.
+            //If the game is not resolved, then show only one cards for the house.
+            if (resolved) {
+                player = "";
+                house = "";
+                pPoint = "";
+                hPoint = "";
+                //this loop is for showing all the cards in the player's hand
+                for (let i = 0; i < playerHand.length;) {
+                    player += playerHand[i].Value;
+                    player += " ";
+                    player += playerHand[i].Suit;
+                    player += ", ";
+                    i++;
+                }
+                for (let i = 0; i < houseHand.length;) {
+                    house += houseHand[i].Value;
+                    house += " ";
+                    house += houseHand[i].Suit;
+                    house += ", ";
+                    i++;
+                }
+                document.getElementById("playerUI").innerHTML = "Player has: " + player;
+                document.getElementById("houseUI").innerHTML = "House has: " + house;
+                document.getElementById("playerPoints").innerHTML = "Points: " + getValue(playerHand);
+                document.getElementById("housePoints").innerHTML = "Points: " + getValue(houseHand);
+            }
+            else {
+                player = "";
+                house = "";
+                pPoint = "";
+                hPoint = "";
+                for (let i = 0; i < playerHand.length;) {
+                    player += playerHand[i].Value;
+                    player += " ";
+                    player += playerHand[i].Suit;
+                    player += ", ";
+                    i++;
+                }
+                //show only one card from the house if the game is not resolved.
+                house += houseHand[0].Value;
+                house += " ";
+                house += houseHand[0].Suit;
+                house += ", ";
+                document.getElementById("playerUI").innerHTML = "Player has: " + player;
+                document.getElementById("houseUI").innerHTML = "House has: " + house;
+                document.getElementById("playerPoints").innerHTML = "Points: " + getValue(playerHand);
+                document.getElementById("housePoints").innerHTML = "Points: "
+            }
+        }
+        function startBJ() {
+            //this variable is used to determine if the game has ended or not
+            resolved = false;
+            //re-enable the buttons
+            document.getElementById("hit").disabled = resolved;
+            document.getElementById("stand").disabled = resolved;
+            //clear the UI
+            document.getElementById("result").innerHTML = "Result: "
+            //create a deck and shuffle it
+            createDeck();
+            shuffle();
+            playerHand = new Array();
+            houseHand = new Array();
+            //pop() method removes the element that have the highest index from the array and return it
+            //deal the card to the house and the player
+            for (let i = 0; i < 2; i++) {
+                var card = deck.pop();
                 playerHand[i] = card;
-			}
-			for (let i = 0; i < 2; i++){
-				var card = deck.pop();
+            }
+            for (let i = 0; i < 2; i++) {
+                var card = deck.pop();
                 houseHand[i] = card;
-			}
-			//console.log(playerHand);
-			console.log(houseHand);
-			//check for blackjack
-			if(getValue(playerHand) == 21||getValue(houseHand) == 21){
-				resolved = true;
-				if(getValue(playerHand) == 21 && getValue(houseHand) == 21){
-					document.getElementById("result").innerHTML="Result: Push by Blackjack"
-				} else if(getValue(playerHand) == 21){
-					document.getElementById("result").innerHTML="Result: The player wins by Blackjack"
-				} else if(getValue(houseHand) == 21){
-					document.getElementById("result").innerHTML="Result: The house wins by Blackjack"
-				}
-				//disable the buttons
-				document.getElementById("hit").disabled = resolved;
-				document.getElementById("stand").disabled = resolved;
-			}
-			updateUI()
-			//update the UI
-		}
-		//calculate the value of each hand by inputting the hand array
-		function getValue(Hand){
-			sumValue = 0;
-			hasAce = false; //see if the hand has an Ace or not
-			for(let i = 0; i < Hand.length ;i++){
-				sumValue += parseInt(Hand[i].Weight);
-				if(Hand[i].Value == "A") hasAce = true;
-			}
-			//if the hand has ace and the value is less than 12 then the value of Ace will be 11
-			if(hasAce && sumValue < 12) sumValue +=10;
-			return sumValue;
-		}
-		//add a card from the deck to the player's hand
-		function pHit(){
-			let card = deck.pop();
-			playerHand[playerHand.length] = card;
-			if(getValue(playerHand)>21){
-				resolved = true;
-				document.getElementById("result").innerHTML="Result: The player busted, the house wins.";
-				document.getElementById("hit").disabled = resolved;
-				document.getElementById("stand").disabled = resolved;
-			}
-			updateUI();
-		}
-		//let the house play and resolve the game
-		function pStand(){
-			resolved = true;
-			//the house will play until he is busted or has a hand that is larger than 16
-			while(getValue(houseHand) < 17){
-				let card = deck.pop();
-				houseHand[houseHand.length] = card;
-				console.log(houseHand);
-				if(getValue(houseHand)>21){
-					document.getElementById("result").innerHTML="Result: The house busted, the player wins.";
-					break;
-				}
-			}
-			//If the house is not busted, compare the hands
-			if(getValue(houseHand)<22){
-				if(getValue(houseHand)>getValue(playerHand)){
-					document.getElementById("result").innerHTML="Result: The house wins by points";
-				}
-				else if(getValue(houseHand)<getValue(playerHand)){
-					document.getElementById("result").innerHTML="Result: The player wins by points";
-				}
-				else{
-					document.getElementById("result").innerHTML="Result: Push";
-				}
-			}
-			//disabled the buttons
-			document.getElementById("hit").disabled = resolved;
-			document.getElementById("stand").disabled = resolved;
-			//show all cards and points
-			updateUI();
-		}
-	</script>
+            }
+            //console.log(playerHand);
+            console.log(houseHand);
+            //check for blackjack
+            if (getValue(playerHand) == 21 || getValue(houseHand) == 21) {
+                resolved = true;
+                if (getValue(playerHand) == 21 && getValue(houseHand) == 21) {
+                    document.getElementById("result").innerHTML = "Result: Push by Blackjack"
+                } else if (getValue(playerHand) == 21) {
+                    document.getElementById("result").innerHTML = "Result: The player wins by Blackjack"
+                } else if (getValue(houseHand) == 21) {
+                    document.getElementById("result").innerHTML = "Result: The house wins by Blackjack"
+                }
+                //disable the buttons
+                document.getElementById("hit").disabled = resolved;
+                document.getElementById("stand").disabled = resolved;
+            }
+            updateUI()
+            //update the UI
+        }
+        //calculate the value of each hand by inputting the hand array
+        function getValue(Hand) {
+            sumValue = 0;
+            hasAce = false; //see if the hand has an Ace or not
+            for (let i = 0; i < Hand.length; i++) {
+                sumValue += parseInt(Hand[i].Weight);
+                if (Hand[i].Value == "A") hasAce = true;
+            }
+            //if the hand has ace and the value is less than 12 then the value of Ace will be 11
+            if (hasAce && sumValue < 12) sumValue += 10;
+            return sumValue;
+        }
+        //add a card from the deck to the player's hand
+        function pHit() {
+            let card = deck.pop();
+            playerHand[playerHand.length] = card;
+            if (getValue(playerHand) > 21) {
+                resolved = true;
+                document.getElementById("result").innerHTML = "Result: The player busted, the house wins.";
+                document.getElementById("hit").disabled = resolved;
+                document.getElementById("stand").disabled = resolved;
+            }
+            updateUI();
+        }
+        //let the house play and resolve the game
+        function pStand() {
+            resolved = true;
+            //the house will play until he is busted or has a hand that is larger than 16
+            while (getValue(houseHand) < 17) {
+                let card = deck.pop();
+                houseHand[houseHand.length] = card;
+                console.log(houseHand);
+                if (getValue(houseHand) > 21) {
+                    document.getElementById("result").innerHTML = "Result: The house busted, the player wins.";
+                    break;
+                }
+            }
+            //If the house is not busted, compare the hands
+            if (getValue(houseHand) < 22) {
+                if (getValue(houseHand) > getValue(playerHand)) {
+                    document.getElementById("result").innerHTML = "Result: The house wins by points";
+                }
+                else if (getValue(houseHand) < getValue(playerHand)) {
+                    document.getElementById("result").innerHTML = "Result: The player wins by points";
+                }
+                else {
+                    document.getElementById("result").innerHTML = "Result: Push";
+                }
+            }
+            //disabled the buttons
+            document.getElementById("hit").disabled = resolved;
+            document.getElementById("stand").disabled = resolved;
+            //show all cards and points
+            updateUI();
+        }
+    </script>
 </body>
+
 </html>

@@ -13,6 +13,7 @@
 	<p id="playerPoints">points: </p><br>
 	<p id="houseUI">House has: </p>
 	<p id="housePoints">points: </p><br>
+	<p id="bustedProb">Chance of busted: </p> <br>
 	<p id="result">Result: </p><br>
 	<button onclick="pHit()" id="hit">Hit me</button>
 	<button onclick="pStand()" id="stand">Stand</button>
@@ -101,7 +102,7 @@
 				document.getElementById("houseUI").innerHTML = "House has: " + house;
 				document.getElementById("playerPoints").innerHTML = "Points: " + getValue(playerHand);
 				document.getElementById("housePoints").innerHTML = "Points: "
-				bustedProbability(deck, playerHand);
+				document.getElementById("bustedProb").innerHTML = "Chance of getting busted when deal the next card:"+bustedProbability(deck, playerHand);
 			}
 		}
 		function startBJ() {

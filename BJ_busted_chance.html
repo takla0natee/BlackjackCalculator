@@ -3,7 +3,6 @@
 
 <head>
 	<meta charset="utf-8">
-	<script type="text/javascript" src='scripts/combinations.js'> </script>
 </head>
 
 <body>
@@ -102,6 +101,7 @@
 				document.getElementById("houseUI").innerHTML = "House has: " + house;
 				document.getElementById("playerPoints").innerHTML = "Points: " + getValue(playerHand);
 				document.getElementById("housePoints").innerHTML = "Points: "
+				bustedProbability(deck, playerHand);
 			}
 		}
 		function startBJ() {
@@ -209,22 +209,27 @@
 			// The output is a possible combination of card dealt cards
 			// together with cards on playerHand
 			
+			//assign to new var to avoid conflict
+			tempDeckCards = Array.from(deckCards);
+
+			tempPlayerCards = Array.from(playerCards);
+
 			weightInHand = getValue(playerCards); 
 			// This part calculate weight in player hand
-
 			
 			possibleValues = [];
-			possibilities = 0; //for counting #possibilities
+			possibilities = Number(deckCards.length); //for counting #possibilities
 			busted = 0; //for counting #busted scenarios
-			console.log(deckCards.length);
+			allComb = [];
 			for(i=0; i<deckCards.length; i++){
-				tempCards = playerCards; //for storing card in each scenario
-				tempCards.push(deckCards[i]) //dealt a card to hand
+				tempCards = Array.from(tempPlayerCards); //for storing card in each scenario
+				tempCards.push(tempDeckCards[i]); //dealt a card to hand
+				allComb.push(tempCards);
 				aPossibleValue = getValue(tempCards);
 				possibleValues.push(getValue(tempCards));
-				possibilities+=1;
 				if(aPossibleValue>21){busted+=1;}
 			}
+			console.log(busted/possibilities)
 			return(busted/possibilities);
 		}
 	</script>

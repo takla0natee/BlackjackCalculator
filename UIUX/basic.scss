@@ -5,6 +5,12 @@ body{
     margin:0em;
 }
 
+.prompt{
+    h1{
+        text-align: center;
+    }
+}
+
 .card{
     background-color: white;
     height: 40vh;
@@ -36,6 +42,6 @@ body{
     height:46vh;
     justify-content: center;
     align-items: center;
-    margin:0em;
+    margin:0.3em;
     padding:0;
   }

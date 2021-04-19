@@ -1,10 +1,41 @@
-.column{
-    float: left;
-    width: 45%;
+body{
+    background-color: gray;
+    height:100vh;
+    width:100vw;
+    margin:0em;
 }
 
-.row.after {
-    content:"";
-    display: table;
-    clear: both;
+.card{
+    background-color: white;
+    height: 40vh;
+    width: 40vw;
+    border-radius: 2em;
+    padding: 1em 0;
+    text-align: center;
+    align-items: center;
+    margin: 1em 1em;
+
+    p{
+        font-size: 300%;
+        margin-left:auto;
+        margin-right: auto;
+        padding-top: auto;
+        padding-bottom: auto;
+        width:40%;
+    }
+
 }
+
+
+.block{
+    min-height: 25vh;
+}
+
+.center {
+    display: flex;
+    height:46vh;
+    justify-content: center;
+    align-items: center;
+    margin:0em;
+    padding:0;
+  }

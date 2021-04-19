@@ -8,36 +8,52 @@
     <title>Basic Flow</title>
 
     <link rel="stylesheet" href="basic.css">
+
+
 </head>
 
 <body>
 
-    <div class="prompt">
-        <h1>Choose your suite</h1>
+    <div class="stage" id='suite-selection'>
+
+        <div class="prompt">
+            <h1>Choose your suite</h1>
+        </div>
+    
+        <div class="center">
+    
+            <div class="card">
+                <p>&hearts;</p>
+            </div>
+            
+            <div class="card">
+                <p>&spades;</p>
+            </div>
+        </div>
+    
+        <div class="center">
+    
+            <div class="card">
+                <p>&clubs;</p>
+            </div>
+            
+            <div class="card">
+                <p>&diamondsuit;</p>
+            </div>
+        </div>
+
+        <div class="next-button" id="next-button">
+            <p>next</p>
+        </div>
+
     </div>
 
-    <div class="center">
+    <!-- <div class="stage" id="value-selection">
 
-        <div class="card">
-            <p>&hearts;</p>
-        </div>
-        
-        <div class="card">
-            <p>&spades;</p>
-        </div>
-    </div>
+    </div> -->
 
-    <div class="center">
-
-        <div class="card">
-            <p>&clubs;</p>
-        </div>
-        
-        <div class="card">
-            <p>&diamondsuit;</p>
-        </div>
-    </div>
-
+    <!-- script goes here to avoid problem with DOM -->
+    <script src="flow_control.js"></script>
 </body>
 
 </html>

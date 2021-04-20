@@ -32,6 +32,9 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-line-pack: distribute;
       align-content: space-around;
   margin: 0;
@@ -48,13 +51,14 @@ body {
 
 .card {
   background-color: white;
+  min-width: 1.2em;
   border-radius: 2em;
   padding: 5%;
   text-align: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 1% 1%;
+  margin: 1%;
 }
 
 .card p {
@@ -119,24 +123,28 @@ p {
   position: fixed;
   -webkit-transform: translate(-100%, -100%);
           transform: translate(-100%, -100%);
-  bottom: 1%;
-  right: 1%;
-  padding: 2%;
+  bottom: .8em;
+  right: .5em;
+  padding: 4%;
   border-radius: 1em;
+  margin: 0;
   text-align: center;
   color: white;
+  min-width: 0.3vw;
 }
 
 .back-button {
   background-color: grey;
   position: fixed;
-  -webkit-transform: translate(0%, -100%);
-          transform: translate(0%, -100%);
-  bottom: 1%;
-  left: 1%;
-  padding: 2%;
+  -webkit-transform: translate(50%, -100%);
+          transform: translate(50%, -100%);
+  bottom: .8em;
+  left: 1.8em;
+  padding: 4%;
   border-radius: 1em;
+  margin: 0;
   text-align: center;
   color: white;
+  min-width: 0.3vw;
 }
 /*# sourceMappingURL=basic.css.map */

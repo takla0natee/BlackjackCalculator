@@ -26,7 +26,8 @@ body {
     flex-wrap: wrap;
     min-height: 40vh;
     justify-content: center;
-    // align-items: center;
+    align-items: center;
+    // flex-flow: column;
     align-content: space-around;
     margin: 0;
     padding: 0;
@@ -44,13 +45,12 @@ body {
 
 .card {
     background-color: white;
-    // min-height: 40vh;
-    // width: 100%;
+    min-width:1.2em;
     border-radius: 2em;
     padding: 5%;
     text-align: center;
     align-items: center;
-    margin: 1% 1%;
+    margin: 1%;
 
     p {
         text-align: center;
@@ -113,23 +113,29 @@ p{
     position: fixed;
     transform: translate(-100%, -100%);
     //to move anchor point to bottom right
-    bottom: 1%;
-    right: 1%;
-    padding: 2%;
+    bottom: .8em;
+    right: .5em;
+    padding: 4%;
     border-radius: 1em;
+    margin:0;
     text-align: center;
     color: white;
+
+    min-width:0.3vw;
 }
 
 .back-button {
     background-color: grey;
     position: fixed;
-    transform: translate(0%, -100%);
+    transform: translate(+50%, -100%);
     //to move anchor point to bottom left
-    bottom: 1%;
-    left: 1%;
-    padding: 2%;
+    bottom: .8em;
+    left: 1.8em;
+    padding: 4%;
     border-radius: 1em;
+    margin:0;
     text-align: center;
     color: white;
+
+    min-width:0.3vw;
 }

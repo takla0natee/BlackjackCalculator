@@ -34,7 +34,6 @@ nextButtonToSum.addEventListener('click', function(){
     summaPage.classList.remove("stage-hide");
     summaPage.classList.add("stage");
 });
-
 backButtonToSuite.addEventListener('click', function(){
     suiteSelect.classList.add("stage");
     suiteSelect.classList.remove("stage-hide");
@@ -47,6 +46,13 @@ backButtonToSuite.addEventListener('click', function(){
 addCardButton.addEventListener('click', function(){
     suiteSelect.classList.add("stage");
     suiteSelect.classList.remove("stage-hide");
+
+    summaPage.classList.add("stage-hide");
+    summaPage.classList.remove("stage");
+});
+backButtonToRank.addEventListener('click', function(){
+    valueSelect.classList.add("stage");
+    valueSelect.classList.remove("stage-hide");
 
     summaPage.classList.add("stage-hide");
     summaPage.classList.remove("stage");

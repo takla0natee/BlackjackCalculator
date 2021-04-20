@@ -66,6 +66,10 @@ body {
   padding-bottom: auto;
 }
 
+.card:hover {
+  background-color: bisque;
+}
+
 .card-span {
   background-color: white;
   min-height: 40vh;
@@ -85,6 +89,10 @@ body {
   margin-right: auto;
   padding-top: auto;
   padding-bottom: auto;
+}
+
+.card-span:hover {
+  background-color: bisque;
 }
 
 .center {

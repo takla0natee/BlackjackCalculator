@@ -32,10 +32,9 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 1%;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  margin: 0;
   padding: 0;
 }
 
@@ -59,11 +58,11 @@ body {
 }
 
 .card p {
+  text-align: center;
   font-size: 200%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: auto;
-  padding-bottom: auto;
+  margin: 0 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 .card:hover {

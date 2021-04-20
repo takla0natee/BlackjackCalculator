@@ -26,8 +26,9 @@ body {
     flex-wrap: wrap;
     min-height: 40vh;
     justify-content: center;
-    align-items: center;
-    margin: 1%;
+    // align-items: center;
+    align-content: space-around;
+    margin: 0;
     padding: 0;
 }
 
@@ -52,11 +53,11 @@ body {
     margin: 1% 1%;
 
     p {
+        text-align: center;
         font-size: 200%;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: auto;
-        padding-bottom: auto;
+        margin: 0 1%;
+        padding-top: 1%;
+        padding-bottom: 1%;
         // width:40%;
     }
 
@@ -65,6 +66,8 @@ body {
     }
 
 }
+
+
 
 .card-span {
     background-color: white;

@@ -22,27 +22,27 @@
     
         <div class="center">
     
-            <div class="card">
+            <div class="card-span">
                 <p>&hearts;</p>
             </div>
             
-            <div class="card">
+            <div class="card-span">
                 <p>&spades;</p>
             </div>
         </div>
     
         <div class="center">
     
-            <div class="card">
+            <div class="card-span">
                 <p>&clubs;</p>
             </div>
             
-            <div class="card">
+            <div class="card-span">
                 <p>&diamondsuit;</p>
             </div>
         </div>
 
-        <div class="next-button" id="next-button">
+        <div class="next-button" id="next-button-to-rank">
             <p>next</p>
         </div>
 
@@ -78,9 +78,46 @@
             </div>
         </div>
 
-        <div class="back-button" id="back-button">
+        <div class="back-button" id="back-button-to-suite">
             <p>back</p>
         </div>
+
+        <div class="next-button" id="next-button-to-sum">
+            <p>next</p>
+        </div>
+
+    </div>
+
+    <div class="stage-hide" id="cards-summary">
+
+        <div class="prompt">
+            <h1>Your cards are</h1>
+        </div>
+        <div class="container">
+            <div class="card">
+                Here shows the cards in player Hand
+                <br>
+            </div>
+    
+            <div class="card">
+                Here shows the cards in house hand
+            </div>
+    
+            <div class="card">
+                Shows probability
+            </div>
+
+            <div class="back-button" id="back-button-to-rank">
+                <p>back</p>
+            </div>
+    
+            <div class="next-button" id="add-button">
+                <p>Add</p>
+            </div>
+    
+
+        </div>
+    
     </div>
 
     <!-- script goes here to avoid problem with DOM -->

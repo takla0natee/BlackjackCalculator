@@ -16,9 +16,27 @@ body {
 .stage {
   min-height: 100%;
   min-width: 100%;
+}
+
+.stage-hide {
+  display: none;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-height: 40vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 1%;
+  padding: 0;
 }
 
 .prompt h1 {
@@ -76,10 +94,10 @@ p {
   -webkit-transform: translate(-100%, -100%);
           transform: translate(-100%, -100%);
   bottom: 1%;
-  right: -1%;
+  right: 1%;
   padding: 2%;
   border-radius: 1em;
   text-align: center;
-  color: azure;
+  color: white;
 }
 /*# sourceMappingURL=basic.css.map */

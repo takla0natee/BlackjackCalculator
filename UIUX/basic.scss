@@ -14,7 +14,21 @@ body {
 .stage {
     min-height: 100%;
     min-width: 100%;
+    // align-items: center;
+}
+
+.stage-hide{
+    display:none;
+}
+
+.container {
+    display:flex;
+    flex-wrap: wrap;
+    min-height: 40vh;
+    justify-content: center;
     align-items: center;
+    margin: 1%;
+    padding: 0;
 }
 
 .prompt {
@@ -67,11 +81,22 @@ p{
     transform: translate(-100%, -100%);
     //to move anchor point to bottom right
     bottom: 1%;
-    right: -1%;
+    right: 1%;
     padding: 2%;
     border-radius: 1em;
     text-align: center;
-    color: azure;
+    color: white;
 }
 
-
+.back-button {
+    background-color: grey;
+    position: absolute;
+    transform: translate(0%, -100%);
+    //to move anchor point to bottom left
+    bottom: 1%;
+    right: 1%;
+    padding: 2%;
+    border-radius: 1em;
+    text-align: center;
+    color: white;
+}

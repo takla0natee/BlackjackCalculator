@@ -107,7 +107,7 @@ p{
 
 .next-button {
     background-color: grey;
-    position: absolute;
+    position: fixed;
     transform: translate(-100%, -100%);
     //to move anchor point to bottom right
     bottom: 1%;

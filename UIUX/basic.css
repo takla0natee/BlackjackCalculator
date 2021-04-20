@@ -117,7 +117,7 @@ p {
 
 .next-button {
   background-color: grey;
-  position: absolute;
+  position: fixed;
   -webkit-transform: translate(-100%, -100%);
           transform: translate(-100%, -100%);
   bottom: 1%;

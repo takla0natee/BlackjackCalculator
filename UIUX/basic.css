@@ -100,4 +100,17 @@ p {
   text-align: center;
   color: white;
 }
+
+.back-button {
+  background-color: grey;
+  position: absolute;
+  -webkit-transform: translate(0%, -100%);
+          transform: translate(0%, -100%);
+  bottom: 1%;
+  right: 1%;
+  padding: 2%;
+  border-radius: 1em;
+  text-align: center;
+  color: white;
+}
 /*# sourceMappingURL=basic.css.map */

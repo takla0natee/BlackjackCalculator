@@ -1,3 +1,5 @@
+//Shared variable with 
+
 //Call elements in each stage
 
 //suite-select

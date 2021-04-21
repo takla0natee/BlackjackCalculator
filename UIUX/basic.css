@@ -73,7 +73,7 @@ body {
   background-color: bisque;
 }
 
-.card-span {
+.card-suite {
   background-color: white;
   min-height: 40vh;
   width: 100%;
@@ -86,7 +86,7 @@ body {
   margin: 1% 1%;
 }
 
-.card-span p {
+.card-suite p {
   font-size: 300%;
   margin-left: auto;
   margin-right: auto;
@@ -94,7 +94,7 @@ body {
   padding-bottom: auto;
 }
 
-.card-span:hover {
+.card-suite:hover {
   background-color: bisque;
 }
 

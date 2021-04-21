@@ -1,5 +1,12 @@
 //Shared variable with 
 
+//define card
+cardValue = 0 ;
+cardSuite = 0 ;
+
+//define selector
+suiteSelector = document.getElementsByClassName("card-suite");
+
 //Call elements in each stage
 
 //suite-select
@@ -10,8 +17,6 @@ backButtonToSuite = document.getElementById("back-button-to-suite");
 //summary page
 addCardButton = document.getElementById("add-button");
 backButtonToRank = document.getElementById("back-button-to-rank");
-
-
 
 //Assign each stage to a variable
 valueSelect = document.getElementById("value-selection");

@@ -43,6 +43,7 @@ function bustedProbability(deckCards, playerCards) {
     return(busted/possibilities);
 }
 function houseBustedProbability(deckCards, houseCard) {
+    //input houseCard is a variable, NOT an array
     //This is a function for finding the probability that the house will bust (limit max card that house can hold to 5)
     // assign a new deck for each case
     possibilities = 0;

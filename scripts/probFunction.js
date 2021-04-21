@@ -49,27 +49,27 @@ function houseBustedProbability(deckCards, houseCard) {
     busted = 0;
     tempDeckCards = Array.from(deckCards);
     tempCards = new Array;
-    for(i = 0,i<deckCards.length,i++){
+    for(i = 0;i<deckCards.length;i++){
         tempCards = []; //refreshings the tempcard for each loop
         tempCards[0] = houseCard;
         tempCards.push(tempDeckCards[i]);//draw the first card
         if(getValue(tempCards)<17){
-            for(j=0,i<deckCards.lemgth,i++){
+            for(j=0;i<deckCards.length;i++){
                 if(j!==i){ //check so that we don't draw the same card
                  tempCards.push(tempDeckCards[j]);//draw the second card
                     if(getValue(tempCards)<17){
-                        for(k=0,k<deckCards.length,i++){
+                        for(k=0;k<deckCards.length;i++){
                             if(k!==i && k!==j){ //check so that we don't draw the same card
                                 tempCards.push(tempDeckCards[k]);//draw the third card
                                 if(getValue(tempCards)>21){ //check if busted
-                                 busted++;
+                                    busted++;
                                     possibilities++;
                                 }
                                 else if(getValue(tempCards)>16){//check if house stands or not
                                     possibilities++;
                                 }
                                 else{// if not, then draw the fourth card
-                                    for(l=0,l<deckCards.length,l++){
+                                    for(l=0;l<deckCards.length;l++){
                                         if(l!==i&&l!==j&&l!==k){//check so that we have four different cards
                                             tempCards.push(tempDeckCards[l]);
                                             if(getValue(tempCards)>21){//check for busted
@@ -83,7 +83,11 @@ function houseBustedProbability(deckCards, houseCard) {
                                     }
                                 }
                             }
-                     }
+                        }
+                    }
+                    else if(getValue(tempCards)>21){
+                        busted++;
+                        probabilities++;
                     }
                     else{
                     possibilities++;
@@ -95,5 +99,6 @@ function houseBustedProbability(deckCards, houseCard) {
             possibilities++;
         }
     }
-
+    console.log(busted/possibilities);
+    return(busted/possibilities);
 }

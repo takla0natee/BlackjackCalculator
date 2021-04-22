@@ -34,6 +34,9 @@ function getValueRadio(name) {
             return(radios[i].value);}
     }
 }
+//Array for store cards in the game
+playerHands = new Array();
+houseHands = new Array();
 
 //Button action
 //SuiteSelectPage

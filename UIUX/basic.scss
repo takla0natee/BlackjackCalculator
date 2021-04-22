@@ -1,7 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
-body {
 
-    background-color: lightgray;
+//define common values
+:root {
+    --base-color: rgb(240,180,160);
+    --accent-color: rgb(222, 105, 67);
+}
+
+body {
+    background-color: var(--base-color);
     font-family: "Poppins";
 
     min-height: 100vh;
@@ -61,8 +67,14 @@ body {
         // width:40%;
     }
 
-    &:hover {
-        background-color:bisque;
+    &:focus {
+        background-color:var(--accent-color);
+        outline:none; //remove outline when focus
+    }
+
+    //To hide radio button
+    input{
+        display:none;
     }
 
 }
@@ -80,18 +92,21 @@ body {
     margin: 1% 1%;
 
     p {
+        position:flex;
+        height:40vh;
         font-size: 300%;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: auto;
-        padding-bottom: auto;
-        // width:40%;
+        align-content: space-around;
     }
 
-    &:hover {
-        background-color:bisque;
+    &:focus {
+        background-color:var(--accent-color);
+        outline:none; //remove outline when focus
     }
 
+    //To hide radio button
+    input{
+        display:none;
+    }
 }
 
 .center {

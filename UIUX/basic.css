@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+:root {
+  --base-color: rgb(240,180,160);
+  --accent-color: rgb(222, 105, 67);
+}
+
 body {
-  background-color: lightgray;
+  background-color: var(--base-color);
   font-family: "Poppins";
   min-height: 100vh;
   width: 100vw;
@@ -69,8 +74,13 @@ body {
   padding-bottom: 1%;
 }
 
-.card:hover {
-  background-color: bisque;
+.card:focus {
+  background-color: var(--accent-color);
+  outline: none;
+}
+
+.card input {
+  display: none;
 }
 
 .card-suite {
@@ -87,15 +97,20 @@ body {
 }
 
 .card-suite p {
+  position: flex;
+  height: 40vh;
   font-size: 300%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: auto;
-  padding-bottom: auto;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
 }
 
-.card-suite:hover {
-  background-color: bisque;
+.card-suite:focus {
+  background-color: var(--accent-color);
+  outline: none;
+}
+
+.card-suite input {
+  display: none;
 }
 
 .center {

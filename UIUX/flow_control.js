@@ -14,6 +14,9 @@ valueSelect = document.getElementById("value-selection");
 suiteSelect = document.getElementById("suite-selection");
 summaPage = document.getElementById("cards-summary");
 
+//Display element in summary page
+playerCardDisplay = document.getElementById("playerCard");
+
 // //Export variables
 // //export variable 
 // export {nextButtonToRank,nextButtonToSum,
@@ -55,7 +58,12 @@ nextButtonToSum.addEventListener('click', function () {
 
     summaPage.classList.remove("stage-hide");
     summaPage.classList.add("stage");
+    
+    //action on the summary page
+    playerCardDisplay.innerHTML = "Your card: "
+        +cardSuite+cardRank;
 });
+
 backButtonToSuite.addEventListener('click', function () {
     suiteSelect.classList.add("stage");
     suiteSelect.classList.remove("stage-hide");

@@ -1,12 +1,3 @@
-//Shared variable with 
-
-//define card
-cardValue = 0 ;
-cardSuite = 0 ;
-
-//define selector
-suiteSelector = document.getElementsByClassName("card-suite");
-
 //Call elements in each stage
 
 //suite-select
@@ -21,11 +12,32 @@ backButtonToRank = document.getElementById("back-button-to-rank");
 //Assign each stage to a variable
 valueSelect = document.getElementById("value-selection");
 suiteSelect = document.getElementById("suite-selection");
-summaPage = document.getElementById("cards-summary")
+summaPage = document.getElementById("cards-summary");
+
+// //Export variables
+// //export variable 
+// export {nextButtonToRank,nextButtonToSum,
+//     backButtonToRank,backButtonToSuite,
+//     addCardButton,valueSelect,
+//     suiteSelect,summaPage}
+
+//get value from radio button
+function getValueRadio(name) {
+    var radios = document.getElementsByName(name)
+    var len = radios.length;
+    for (var i = 0; i < len; i++) {
+        if(radios[i].checked){
+            console.log(radios[i].value)
+            return(radios[i].value);}
+    }
+}
 
 //Button action
 //SuiteSelectPage
-nextButtonToRank.addEventListener('click', function(){
+nextButtonToRank.addEventListener('click', function () {
+    //grab a variable
+    cardSuite = getValueRadio('suite');
+    //turn to next page
     suiteSelect.classList.remove("stage");
     suiteSelect.classList.add("stage-hide");
 
@@ -34,14 +46,17 @@ nextButtonToRank.addEventListener('click', function(){
 });
 
 //ValueSelectPage
-nextButtonToSum.addEventListener('click', function(){
+nextButtonToSum.addEventListener('click', function () {
+
+    cardRank = getValueRadio('rank');
+
     valueSelect.classList.remove("stage");
     valueSelect.classList.add("stage-hide");
-    
+
     summaPage.classList.remove("stage-hide");
     summaPage.classList.add("stage");
 });
-backButtonToSuite.addEventListener('click', function(){
+backButtonToSuite.addEventListener('click', function () {
     suiteSelect.classList.add("stage");
     suiteSelect.classList.remove("stage-hide");
 
@@ -50,17 +65,19 @@ backButtonToSuite.addEventListener('click', function(){
 });
 
 //Summary Page
-addCardButton.addEventListener('click', function(){
+addCardButton.addEventListener('click', function () {
     suiteSelect.classList.add("stage");
     suiteSelect.classList.remove("stage-hide");
 
     summaPage.classList.add("stage-hide");
     summaPage.classList.remove("stage");
 });
-backButtonToRank.addEventListener('click', function(){
+backButtonToRank.addEventListener('click', function () {
     valueSelect.classList.add("stage");
     valueSelect.classList.remove("stage-hide");
 
     summaPage.classList.add("stage-hide");
     summaPage.classList.remove("stage");
 });
+
+

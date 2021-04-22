@@ -29,9 +29,10 @@ function getValueRadio(name) {
     var radios = document.getElementsByName(name)
     var len = radios.length;
     for (var i = 0; i < len; i++) {
-        if(radios[i].checked){
+        if (radios[i].checked) {
             console.log(radios[i].value)
-            return(radios[i].value);}
+            return (radios[i].value);
+        }
     }
 }
 //Array for store cards in the game
@@ -61,10 +62,31 @@ nextButtonToSum.addEventListener('click', function () {
 
     summaPage.classList.remove("stage-hide");
     summaPage.classList.add("stage");
-    
+
     //action on the summary page
-    playerCardDisplay.innerHTML = "Your card: "
-        +cardSuite+cardRank;
+    //construct a card and added to the list
+    if (cardRank == "J" || cardRank == "Q" || cardRank == "K") {
+        weight = 10;
+    } else if (cardRank == "A") {
+        weight = 1;
+    } else {
+        weight = parseInt(cardRank);
+    }
+    //create card
+    var card = { Value: cardRank, Suit: cardSuite, 
+        Weight: weight};
+
+    playerHands.push(card);
+
+    //display card 
+    //display string
+    playerCardsStr = "";
+    for (i=0;i<playerHands.length;i++){
+        playerCardsStr = playerCardsStr+playerHands[i].Suit + playerHands[i].Value
+        if (i!=playerHands.length-1){playerCardsStr+", "}
+    }
+
+    playerCardDisplay.innerHTML = playerCardsStr;
 });
 
 backButtonToSuite.addEventListener('click', function () {

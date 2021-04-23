@@ -96,7 +96,7 @@ nextButtonToSum.addEventListener('click', function () {
     //display card 
     //display string
     playerCardsStr = "Your card is ";
-    if (playerHands.lenght>1){playerCardsStr = "Your cards are ";}
+    if (playerHands.length>1){playerCardsStr = "Your cards are ";}
     playerCardsStr = "Your card is ";
     for (i=0;i<playerHands.length;i++){
         playerCardsStr = playerCardsStr+playerHands[i].Suit + playerHands[i].Value

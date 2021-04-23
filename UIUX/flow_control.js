@@ -1,5 +1,6 @@
 //Call elements in each stage
 
+//button on each page
 //suite-select
 nextButtonToRank = document.getElementById("next-button-to-rank");
 //rank-select
@@ -8,14 +9,20 @@ backButtonToSuite = document.getElementById("back-button-to-suite");
 //summary page
 addCardButton = document.getElementById("add-button");
 backButtonToRank = document.getElementById("back-button-to-rank");
+//whose-card page
+nextButtonToSuit = document.getElementById("next-button-to-suit");
+backButtonToSum = document.getElementById("back-button-to-sum");
+
 
 //Assign each stage to a variable
 valueSelect = document.getElementById("value-selection");
 suiteSelect = document.getElementById("suite-selection");
 summaPage = document.getElementById("cards-summary");
+whosePage = document.getElementById("whose-card");
 
 //Display element in summary page
 playerCardDisplay = document.getElementById("playerCard");
+houseCardDisplay = document.getElementById("houseCard");
 
 // //Export variables
 // //export variable 
@@ -38,6 +45,8 @@ function getValueRadio(name) {
 //Array for store cards in the game
 playerHands = new Array();
 houseHands = new Array();
+//the first card is player's card (can be changed later)
+whoseCard =  "player";
 
 //Button action
 //SuiteSelectPage
@@ -75,18 +84,34 @@ nextButtonToSum.addEventListener('click', function () {
     //create card
     var card = { Value: cardRank, Suit: cardSuite, 
         Weight: weight};
-
-    playerHands.push(card);
+    switch (whoseCard){
+        case "player":
+            playerHands.push(card);
+            break;
+        case "house":
+            houseHands.push(card);
+            break;
+    }
 
     //display card 
     //display string
-    playerCardsStr = "";
+    playerCardsStr = String();
     for (i=0;i<playerHands.length;i++){
         playerCardsStr = playerCardsStr+playerHands[i].Suit + playerHands[i].Value
-        if (i!=playerHands.length-1){playerCardsStr+", "}
+        if (i<playerHands.length-1) {
+            playerCardsStr= playerCardsStr+", ";
+        }
     }
-
+    houseCardsStr = String();
+    for (i=0;i<houseHands.length;i++){
+        houseCardsStr = houseCardsStr+houseHands[i].Suit + houseHands[i].Value
+        if (i<houseHands.length-1) {
+            houseCardsStr = houseCardsStr+", ";
+        }
+    }
+    //display on html
     playerCardDisplay.innerHTML = playerCardsStr;
+    houseCardDisplay.innerHTML = houseCardsStr;
 });
 
 backButtonToSuite.addEventListener('click', function () {
@@ -99,18 +124,40 @@ backButtonToSuite.addEventListener('click', function () {
 
 //Summary Page
 addCardButton.addEventListener('click', function () {
-    suiteSelect.classList.add("stage");
-    suiteSelect.classList.remove("stage-hide");
-
+    whosePage.classList.add("stage");
+    whosePage.classList.remove("stage-hide");
+    
     summaPage.classList.add("stage-hide");
     summaPage.classList.remove("stage");
 });
 backButtonToRank.addEventListener('click', function () {
     valueSelect.classList.add("stage");
     valueSelect.classList.remove("stage-hide");
-
+    
     summaPage.classList.add("stage-hide");
     summaPage.classList.remove("stage");
 });
+
+//whose card page
+nextButtonToSuit.addEventListener('click', function () {
+    whoseCard = getValueRadio("whose-card");
+
+    suiteSelect.classList.add("stage");
+    suiteSelect.classList.remove("stage-hide");
+
+    whosePage.classList.remove("stage");
+    whosePage.classList.add("stage-hide");
+});
+
+backButtonToSum.addEventListener('click', function () {
+    whosePage.classList.remove("stage");
+    whosePage.classList.add("stage-hide");
+
+    summaPage.classList.remove("stage-hide");
+    summaPage.classList.add("stage");
+});
+
+
+
 
 

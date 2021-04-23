@@ -17,7 +17,7 @@
     <div class="stage" id='suite-selection'>
 
         <div class="prompt">
-            <h1>Choose your suite</h1>
+            <h1>Choose your suit</h1>
         </div>
         <form>
             <div class="center">
@@ -160,19 +160,19 @@
         <div class="prompt">
             <h1>Your cards are</h1>
         </div>
-        <div class="container">
+        <div class="container flex-col">
             <div class="card">
                 <p id="playerCard">Here shows the cards in player Hand</p>
                 
             </div>
 
-            <!-- <div class="card">
-                Here shows the cards in house hand
+            <div class="card">
+                <p id="houseCard">House hand: </p>
             </div>
 
             <div class="card">
                 Shows probability
-            </div> -->
+            </div>
 
             <div class="back-button" id="back-button-to-rank">
                 <p>Back</p>
@@ -183,6 +183,34 @@
             </div>
         </div>
 
+    </div>
+
+    <div class="stage-hide" id="whose-card">
+        <div class="prompt">
+            <h1>Whose card is this?</h1>
+        </div>
+        <div class="container flex-col">
+            <label class="card" tabindex="0">
+                <p>
+                    Player's
+                </p>
+                <input type="radio" name="whose-card" id="player's" value="player">
+            </label>
+            <label class="card" tabindex="1">
+                <p>
+                    House's
+                </p>
+                <input type="radio" name="whose-card" id="House's" value="house">
+            </label>
+        </div>
+            
+            <div class="back-button" id="back-button-to-sum">
+            <p>Back</p>
+        </div>
+
+        <div class="next-button" id="next-button-to-suit">
+            <p>Next</p>
+        </div>
     </div>
 
     <!-- script goes here to avoid problem with DOM -->

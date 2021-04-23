@@ -46,6 +46,16 @@ body {
   padding: 0;
 }
 
+.flex-col {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
 .prompt h1 {
   position: relative;
   margin: 0;

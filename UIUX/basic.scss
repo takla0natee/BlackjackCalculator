@@ -39,6 +39,11 @@ body {
     padding: 0;
 }
 
+.flex-col {
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .prompt {
     h1 {
         position: relative;

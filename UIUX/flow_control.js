@@ -95,14 +95,16 @@ nextButtonToSum.addEventListener('click', function () {
 
     //display card 
     //display string
-    playerCardsStr = String();
+    playerCardsStr = "Your card is ";
+    if (playerHands.lenght>1){playerCardsStr = "Your cards are ";}
+    playerCardsStr = "Your card is ";
     for (i=0;i<playerHands.length;i++){
         playerCardsStr = playerCardsStr+playerHands[i].Suit + playerHands[i].Value
         if (i<playerHands.length-1) {
             playerCardsStr= playerCardsStr+", ";
         }
     }
-    houseCardsStr = String();
+    houseCardsStr = "House's card is ";
     for (i=0;i<houseHands.length;i++){
         houseCardsStr = houseCardsStr+houseHands[i].Suit + houseHands[i].Value
         if (i<houseHands.length-1) {

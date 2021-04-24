@@ -43,6 +43,8 @@ function getValueRadio(name) {
     }
 }
 //Array for store cards in the game
+playerDeck = createDeck();
+
 playerHands = new Array();
 houseHands = new Array();
 //the first card is player's card (can be changed later)
@@ -87,6 +89,7 @@ nextButtonToSum.addEventListener('click', function () {
     switch (whoseCard){
         case "player":
             playerHands.push(card);
+            removeElement()//deck)
             break;
         case "house":
             houseHands.push(card);

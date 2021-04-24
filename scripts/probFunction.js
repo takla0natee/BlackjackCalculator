@@ -11,6 +11,7 @@ function createDeck() {
             deck.push(card); //push the card into the deck
         }
     }
+    return(deck);
 }
 function bustedProbability(deckCards, playerCards) {
     //this if for calculating chance of getting busted

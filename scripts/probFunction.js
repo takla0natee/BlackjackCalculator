@@ -57,11 +57,11 @@ function houseBustedProbability(deckCards, houseCard) {
         if(getValue(tempCards)<17){
             for(j=0;i<deckCards.length;i++){
                 if(j!==i){ //check so that we don't draw the same card
-                 tempCards.push(tempDeckCards[j]);//draw the second card
+                 tempCards[2]=tempDeckCards[j];//draw the second card
                     if(getValue(tempCards)<17){
                         for(k=0;k<deckCards.length;i++){
                             if(k!==i && k!==j){ //check so that we don't draw the same card
-                                tempCards.push(tempDeckCards[k]);//draw the third card
+                                tempCards[3]=tempDeckCards[k];//draw the third card
                                 if(getValue(tempCards)>21){ //check if busted
                                     busted++;
                                     possibilities++;
@@ -72,7 +72,7 @@ function houseBustedProbability(deckCards, houseCard) {
                                 else{// if not, then draw the fourth card
                                     for(l=0;l<deckCards.length;l++){
                                         if(l!==i&&l!==j&&l!==k){//check so that we have four different cards
-                                            tempCards.push(tempDeckCards[l]);
+                                            tempCards[4]=tempDeckCards[l];
                                             if(getValue(tempCards)>21){//check for busted
                                                 busted++;
                                                 possibilities++;
@@ -88,7 +88,7 @@ function houseBustedProbability(deckCards, houseCard) {
                     }
                     else if(getValue(tempCards)>21){
                         busted++;
-                        probabilities++;
+                        possibilities++;
                     }
                     else{
                     possibilities++;

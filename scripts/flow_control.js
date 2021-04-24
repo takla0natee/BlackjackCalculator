@@ -43,6 +43,8 @@ function getValueRadio(name) {
     }
 }
 //Array for store cards in the game
+playerDeck = createDeck();
+
 playerHands = new Array();
 houseHands = new Array();
 //the first card is player's card (can be changed later)
@@ -84,6 +86,7 @@ nextButtonToSum.addEventListener('click', function () {
     //create card
     var card = { Value: cardRank, Suit: cardSuite, 
         Weight: weight};
+    playerDeck = removeElementByValue(playerDeck,card);
     switch (whoseCard){
         case "player":
             playerHands.push(card);
@@ -115,6 +118,11 @@ nextButtonToSum.addEventListener('click', function () {
     playerCardDisplay.innerHTML = playerCardsStr;
     houseCardDisplay.innerHTML = houseCardsStr;
     probDisplay.innerHTML = "Busted probability = "+bustedProbability(playerDeck,playerHands)*100+"%";
+    // if(houseHands.length>0){
+    //     probDisplay.innerHTML = houseBustedProbability(playerDeck, houseHands[0]) ;
+    // }
+
+
 });
 
 backButtonToSuite.addEventListener('click', function () {

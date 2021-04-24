@@ -23,6 +23,7 @@ whosePage = document.getElementById("whose-card");
 //Display element in summary page
 playerCardDisplay = document.getElementById("playerCard");
 houseCardDisplay = document.getElementById("houseCard");
+probDisplay = document.getElementById("probDisplay");
 
 // //Export variables
 // //export variable 
@@ -86,15 +87,16 @@ nextButtonToSum.addEventListener('click', function () {
     //create card
     var card = { Value: cardRank, Suit: cardSuite, 
         Weight: weight};
+    playerDeck = removeElementByValue(playerDeck,card);
     switch (whoseCard){
         case "player":
-            playerHands.push(card);
-            removeElement()//deck)
+            playerHands.push(card);  
             break;
         case "house":
             houseHands.push(card);
             break;
     }
+    
 
     //display card 
     //display string
@@ -117,6 +119,12 @@ nextButtonToSum.addEventListener('click', function () {
     //display on html
     playerCardDisplay.innerHTML = playerCardsStr;
     houseCardDisplay.innerHTML = houseCardsStr;
+    probDisplay.innerHTML = "Busted probability = "+bustedProbability(playerDeck,playerHands)*100+"%";
+    // if(houseHands.length>0){
+    //     probDisplay.innerHTML = houseBustedProbability(playerDeck, houseHands[0]) ;
+    // }
+    
+
 });
 
 backButtonToSuite.addEventListener('click', function () {

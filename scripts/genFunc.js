@@ -9,9 +9,18 @@ function getValue(Hand) {
     if (hasAce && sumValue < 12) sumValue += 10;
     return sumValue;
 }
+function removeElementByValue(array, elem) {
+    var index = array.map(x=>x.Value).indexOf(elem.Value);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
+    return(array);
+}
+
 function removeElement(array, elem) {
     var index = array.indexOf(elem);
     if (index > -1) {
         array.splice(index, 1);
     }
+    return(array);
 }

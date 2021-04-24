@@ -1,5 +1,7 @@
 function createDeck() {
-    deck = new Array();
+    var suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
+	var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+	var deck = new Array();
     for (var i = 0; i < values.length; i++) {
         for (var x = 0; x < suits.length; x++) {
             var weight = parseInt(values[i]);//assign weight to each card return NaN for JQKA

@@ -183,6 +183,18 @@ addCardButton.addEventListener('click', function () {
 
     //set back button on the next page to show
     backButtonToSum.classList.remove("hide");
+
+    //uncheck radio button to use with the new card
+    // rankButton = document.getElementsByName("rank")
+    // suitButton = document.getElementsByName("suite")
+    // whosButton = document.getElementsByName("whose-card");
+    listOfRadio= ["rank", "suite", "whose-card"];
+    for (var j=0; j<listOfRadio.length; j++){
+        thatButton = document.getElementsByName(listOfRadio[j]);
+        for (var i=0; i<thatButton.length; i++){
+            thatButton[i].checked=false;
+        }
+    }
 });
 backButtonToRank.addEventListener('click', function () {
     valueSelect.classList.add("stage");

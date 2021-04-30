@@ -47,82 +47,122 @@ playerDeck = createDeck();
 
 playerHands = new Array();
 houseHands = new Array();
-//the first card is player's card (can be changed later)
-whoseCard =  "player";
+//for assign card to a deck.
+whoseCard = new String();
 
 //Button action
+//whose card page
+nextButtonToSuit.addEventListener('click', function () {
+    whoseCard = getValueRadio("whose-card");
+    if (whoseCard == undefined) {
+        alert("please select you input");
+    }
+    else {
+        suiteSelect.classList.add("stage");
+        suiteSelect.classList.remove("stage-hide");
+
+        whosePage.classList.remove("stage");
+        whosePage.classList.add("stage-hide");
+    }
+
+});
+
+//set backButton to not show when player pick the first card
+backButtonToSum.classList.add("hide");
+
+backButtonToSum.addEventListener('click', function () {
+    whosePage.classList.remove("stage");
+    whosePage.classList.add("stage-hide");
+
+    summaPage.classList.remove("stage-hide");
+    summaPage.classList.add("stage");
+});
+
+
+
 //SuiteSelectPage
 nextButtonToRank.addEventListener('click', function () {
     //grab a variable
     cardSuite = getValueRadio('suite');
-    //turn to next page
-    suiteSelect.classList.remove("stage");
-    suiteSelect.classList.add("stage-hide");
+    if (cardSuite == undefined) {
+        alert("please select you input");
+    }
+    else {
+        //turn to next page
+        suiteSelect.classList.remove("stage");
+        suiteSelect.classList.add("stage-hide");
 
-    valueSelect.classList.remove("stage-hide");
-    valueSelect.classList.add("stage");
+        valueSelect.classList.remove("stage-hide");
+        valueSelect.classList.add("stage");
+    }
 });
 
 //ValueSelectPage
 nextButtonToSum.addEventListener('click', function () {
 
     cardRank = getValueRadio('rank');
-
-    valueSelect.classList.remove("stage");
-    valueSelect.classList.add("stage-hide");
-
-    summaPage.classList.remove("stage-hide");
-    summaPage.classList.add("stage");
-
-    //action on the summary page
-    //construct a card and added to the list
-    if (cardRank == "J" || cardRank == "Q" || cardRank == "K") {
-        weight = 10;
-    } else if (cardRank == "A") {
-        weight = 1;
-    } else {
-        weight = parseInt(cardRank);
+    if (cardRank == undefined) {
+        alert("please select your input")
     }
-    //create card
-    var card = { Value: cardRank, Suit: cardSuite, 
-        Weight: weight};
-    playerDeck = removeElementByValue(playerDeck,card);
-    switch (whoseCard){
-        case "player":
-            playerHands.push(card);
-            break;
-        case "house":
-            houseHands.push(card);
-            break;
-    }
+    else {
+        valueSelect.classList.remove("stage");
+        valueSelect.classList.add("stage-hide");
 
-    //display card 
-    //display string
-    playerCardsStr = "Your card is ";
-    if (playerHands.length>1){playerCardsStr = "Your cards are ";}
-    playerCardsStr = "Your card is ";
-    for (i=0;i<playerHands.length;i++){
-        playerCardsStr = playerCardsStr+playerHands[i].Suit + playerHands[i].Value
-        if (i<playerHands.length-1) {
-            playerCardsStr= playerCardsStr+", ";
+        summaPage.classList.remove("stage-hide");
+        summaPage.classList.add("stage");
+
+        //action on the summary page
+        //construct a card and added to the list
+        if (cardRank == "J" || cardRank == "Q" || cardRank == "K") {
+            weight = 10;
+        } else if (cardRank == "A") {
+            weight = 1;
+        } else {
+            weight = parseInt(cardRank);
         }
-    }
-    houseCardsStr = "House's card is ";
-    for (i=0;i<houseHands.length;i++){
-        houseCardsStr = houseCardsStr+houseHands[i].Suit + houseHands[i].Value
-        if (i<houseHands.length-1) {
-            houseCardsStr = houseCardsStr+", ";
+        //create card
+        var card = {
+            Value: cardRank, Suit: cardSuite,
+            Weight: weight
+        };
+        playerDeck = removeElementByValue(playerDeck, card);
+        switch (whoseCard) {
+            case "player":
+                playerHands.push(card);
+                break;
+            case "house":
+                houseHands.push(card);
+                break;
         }
+
+        //display card 
+        //display string
+        playerCardsStr = "Your card is ";
+        if (playerHands.length > 1) { playerCardsStr = "Your cards are "; }
+        playerCardsStr = "Your card is ";
+        for (i = 0; i < playerHands.length; i++) {
+            playerCardsStr = playerCardsStr + playerHands[i].Suit + playerHands[i].Value
+            if (i < playerHands.length - 1) {
+                playerCardsStr = playerCardsStr + ", ";
+            }
+        }
+        houseCardsStr = "House's card is ";
+        for (i = 0; i < houseHands.length; i++) {
+            houseCardsStr = houseCardsStr + houseHands[i].Suit + houseHands[i].Value
+            if (i < houseHands.length - 1) {
+                houseCardsStr = houseCardsStr + ", ";
+            }
+        }
+        //display on html
+        playerCardDisplay.innerHTML = playerCardsStr;
+        houseCardDisplay.innerHTML = houseCardsStr;
+        probDisplay.innerHTML = "Busted probability = " 
+            + Math.round(bustedProbability(playerDeck, playerHands) * 10000)/100 
+            + "%";
+        // if(houseHands.length>0){
+        //     probDisplay.innerHTML = houseBustedProbability(playerDeck, houseHands[0]) ;
+        // }
     }
-    //display on html
-    playerCardDisplay.innerHTML = playerCardsStr;
-    houseCardDisplay.innerHTML = houseCardsStr;
-    probDisplay.innerHTML = "Busted probability = "+bustedProbability(playerDeck,playerHands)*100+"%";
-    // if(houseHands.length>0){
-    //     probDisplay.innerHTML = houseBustedProbability(playerDeck, houseHands[0]) ;
-    // }
-
-
 });
 
 backButtonToSuite.addEventListener('click', function () {
@@ -137,35 +177,28 @@ backButtonToSuite.addEventListener('click', function () {
 addCardButton.addEventListener('click', function () {
     whosePage.classList.add("stage");
     whosePage.classList.remove("stage-hide");
-    
+
     summaPage.classList.add("stage-hide");
     summaPage.classList.remove("stage");
+
+    //set back button on the next page to show
+    backButtonToSum.classList.remove("hide");
 });
 backButtonToRank.addEventListener('click', function () {
     valueSelect.classList.add("stage");
     valueSelect.classList.remove("stage-hide");
-    
+
     summaPage.classList.add("stage-hide");
     summaPage.classList.remove("stage");
-});
-
-//whose card page
-nextButtonToSuit.addEventListener('click', function () {
-    whoseCard = getValueRadio("whose-card");
-
-    suiteSelect.classList.add("stage");
-    suiteSelect.classList.remove("stage-hide");
-
-    whosePage.classList.remove("stage");
-    whosePage.classList.add("stage-hide");
-});
-
-backButtonToSum.addEventListener('click', function () {
-    whosePage.classList.remove("stage");
-    whosePage.classList.add("stage-hide");
-
-    summaPage.classList.remove("stage-hide");
-    summaPage.classList.add("stage");
+    //if click back we have to pop the lastest element out of the list
+    switch (whoseCard) {
+        case "player":
+            playerHands.pop();
+            break;
+        case "house":
+            houseHands.pop();
+            break;
+    }
 });
 
 

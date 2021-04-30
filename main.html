@@ -13,8 +13,35 @@
 </head>
 
 <body>
+    <div class="stage" id="whose-card">
+        <div class="prompt">
+            <h1>Whose card is this?</h1>
+        </div>
+        <div class="container flex-col">
+            <label class="card" tabindex="0">
+                <p>
+                    Player's
+                </p>
+                <input type="radio" name="whose-card" id="player's" value="player">
+            </label>
+            <label class="card" tabindex="1">
+                <p>
+                    House's
+                </p>
+                <input type="radio" name="whose-card" id="House's" value="house">
+            </label>
+        </div>
+            
+            <div class="back-button" id="back-button-to-sum">
+            <p>Back</p>
+        </div>
 
-    <div class="stage" id='suite-selection'>
+        <div class="next-button" id="next-button-to-suit">
+            <p>Next</p>
+        </div>
+    </div>
+
+    <div class="stage-hide" id='suite-selection'>
 
         <div class="prompt">
             <h1>Choose your suit</h1>
@@ -158,7 +185,7 @@
     <div class="stage-hide" id="cards-summary">
 
         <div class="prompt">
-            <h1>GameSummary</h1>
+            <h1>Game Summary</h1>
         </div>
         <div class="container flex-col">
             <div class="card">
@@ -183,34 +210,6 @@
             </div>
         </div>
 
-    </div>
-
-    <div class="stage-hide" id="whose-card">
-        <div class="prompt">
-            <h1>Whose card is this?</h1>
-        </div>
-        <div class="container flex-col">
-            <label class="card" tabindex="0">
-                <p>
-                    Player's
-                </p>
-                <input type="radio" name="whose-card" id="player's" value="player">
-            </label>
-            <label class="card" tabindex="1">
-                <p>
-                    House's
-                </p>
-                <input type="radio" name="whose-card" id="House's" value="house">
-            </label>
-        </div>
-            
-            <div class="back-button" id="back-button-to-sum">
-            <p>Back</p>
-        </div>
-
-        <div class="next-button" id="next-button-to-suit">
-            <p>Next</p>
-        </div>
     </div>
 
     <!-- script goes here to avoid problem with DOM -->

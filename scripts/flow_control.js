@@ -24,13 +24,6 @@ whosePage = document.getElementById("whose-card");
 playerCardDisplay = document.getElementById("playerCard");
 houseCardDisplay = document.getElementById("houseCard");
 
-// //Export variables
-// //export variable 
-// export {nextButtonToRank,nextButtonToSum,
-//     backButtonToRank,backButtonToSuite,
-//     addCardButton,valueSelect,
-//     suiteSelect,summaPage}
-
 //get value from radio button
 function getValueRadio(name) {
     var radios = document.getElementsByName(name)
@@ -42,6 +35,27 @@ function getValueRadio(name) {
         }
     }
 }
+
+//turn suit string to emoji
+function emojize(suitStr) {
+    emoji = new String();
+    switch(suitStr){
+        case "Hearts":
+            emoji = "&hearts;";
+            break;
+        case "Spades":
+            emoji = "&spades;";
+            break;
+        case "Clubs":
+            emoji = "&clubs;";
+            break;
+        case "Diamonds":
+            emoji = "&diamondsuit;"
+            break;
+    }
+    return(emoji);
+}
+
 //Array for store cards in the game
 playerDeck = createDeck();
 
@@ -137,18 +151,17 @@ nextButtonToSum.addEventListener('click', function () {
 
         //display card 
         //display string
-        playerCardsStr = "Your card is ";
-        if (playerHands.length > 1) { playerCardsStr = "Your cards are "; }
-        playerCardsStr = "Your card is ";
+        playerCardsStr = "Your card is <br> ";
+        if (playerHands.length > 1) { playerCardsStr = "Your cards are <br>"; }
         for (i = 0; i < playerHands.length; i++) {
-            playerCardsStr = playerCardsStr + playerHands[i].Suit + playerHands[i].Value
+            playerCardsStr = playerCardsStr + emojize(playerHands[i].Suit) + playerHands[i].Value
             if (i < playerHands.length - 1) {
                 playerCardsStr = playerCardsStr + ", ";
             }
         }
-        houseCardsStr = "House's card is ";
+        houseCardsStr = "House's card is <br>";
         for (i = 0; i < houseHands.length; i++) {
-            houseCardsStr = houseCardsStr + houseHands[i].Suit + houseHands[i].Value
+            houseCardsStr = houseCardsStr + emojize(houseHands[i].Suit) + houseHands[i].Value
             if (i < houseHands.length - 1) {
                 houseCardsStr = houseCardsStr + ", ";
             }
@@ -159,9 +172,6 @@ nextButtonToSum.addEventListener('click', function () {
         probDisplay.innerHTML = "Busted probability = " 
             + Math.round(bustedProbability(playerDeck, playerHands) * 10000)/100 
             + "%";
-        // if(houseHands.length>0){
-        //     probDisplay.innerHTML = houseBustedProbability(playerDeck, houseHands[0]) ;
-        // }
     }
 });
 
@@ -185,9 +195,6 @@ addCardButton.addEventListener('click', function () {
     backButtonToSum.classList.remove("hide");
 
     //uncheck radio button to use with the new card
-    // rankButton = document.getElementsByName("rank")
-    // suitButton = document.getElementsByName("suite")
-    // whosButton = document.getElementsByName("whose-card");
     listOfRadio= ["rank", "suite", "whose-card"];
     for (var j=0; j<listOfRadio.length; j++){
         thatButton = document.getElementsByName(listOfRadio[j]);

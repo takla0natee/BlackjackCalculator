@@ -13,11 +13,18 @@
 
 }
 
+//set view port to fit mobile browser
+.fit-height-mobile {
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
+}
+
 body {
     background-color: var(--base-color);
     font-family: "Poppins";
     color: var(--text-color);
     min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     width: 100vw;
     margin: 0;
     display: flex;

@@ -16,11 +16,11 @@
 </head>
 
 <body>
-    <div class="stage" id="whose-card">
-        <div class="prompt">
-            <h1>Whose card is this?</h1>
-        </div>
+    <div class="stage flex-col" id="whose-card">
         <div class="container flex-col">
+            <div class="prompt">
+                <h1>Whose card is this?</h1>
+            </div>
             <label class="card" tabindex="0">
                 <p>
                     Player's
@@ -34,8 +34,8 @@
                 <input type="radio" name="whose-card" id="House's" value="house">
             </label>
         </div>
-            
-            <div class="back-button" id="back-button-to-sum">
+
+        <div class="back-button" id="back-button-to-sum">
             <p>Back</p>
         </div>
 
@@ -45,57 +45,61 @@
     </div>
 
     <div class="stage-hide" id='suite-selection'>
+        <div class="container">
 
-        <div class="prompt">
-            <h1>Choose the card's suit</h1>
+            <div class="prompt">
+                <h1>Choose the card's suit</h1>
+            </div>
+                <div class="center">
+
+                    <label class="card-suite" tabindex="0">
+
+                        <p>&hearts;</p>
+                        <input type="radio" id="hearts" name="suite" value="Hearts">
+                    </label>
+
+
+                    <label class="card-suite" tabindex="1">
+
+                        <p>&spades;</p>
+                        <input type="radio" id="spades" name="suite" value="Spades">
+                    </label>
+
+                </div>
+                <div class="center">
+
+                    <label class="card-suite" tabindex="2">
+
+                        <p>&clubs;</p>
+                        <input type="radio" id="clubs" name="suite" value='Clubs'>
+                    </label>
+
+
+                    <label class="card-suite" tabindex="3">
+
+                        <p>&diamondsuit;</p>
+                        <input type="radio" id="diamons" name="suite" value='Diamonds'>
+                    </label>
+
+                </div>
+
+                <div class="back-button" id="back-button-to-whose">
+                    <p>Back</p>
+                </div>
+
+                <div class="next-button" id="next-button-to-rank">
+                    <p>Next</p>
+                </div>
         </div>
-        <form>
-            <div class="center">
-
-                <label class="card-suite" tabindex="0">
-
-                    <p>&hearts;</p>
-                    <input type="radio" id="hearts" name="suite" value="Hearts">
-                </label>
-
-
-                <label class="card-suite" tabindex="1">
-
-                    <p>&spades;</p>
-                    <input type="radio" id="spades" name="suite" value="Spades">
-                </label>
-
-            </div>
-            <div class="center">
-
-                <label class="card-suite" tabindex="2">
-
-                    <p>&clubs;</p>
-                    <input type="radio" id="clubs" name="suite" value='Clubs'>
-                </label>
-
-
-                <label class="card-suite" tabindex="3">
-
-                    <p>&diamondsuit;</p>
-                    <input type="radio" id="diamons" name="suite" value='Diamonds'>
-                </label>
-
-            </div>
-
-            <div class="next-button" id="next-button-to-rank">
-                <p>Next</p>
-            </div>
-        </form>
     </div>
 
-    <div class="stage-hide" id="value-selection">
-
-        <div class="prompt">
-            <h1>Choose the card's rank</h1>
-        </div>
+    <div class="stage-hide " id="value-selection">
 
         <div class="container">
+            <div class="prompt">
+                <h1>Choose the card's rank</h1>
+            </div>
+
             <label class="card" tabindex='1'>
                 <p>A</p>
                 <input type="radio" name="rank" value='A'>
@@ -187,13 +191,13 @@
 
     <div class="stage-hide" id="cards-summary">
 
-        <div class="prompt">
-            <h1>Game Summary</h1>
-        </div>
         <div class="container flex-col">
+            <div class="prompt">
+                <h1>Game Summary</h1>
+            </div>
             <div class="card">
                 <p id="playerCard">Here shows the cards in player Hand</p>
-                
+
             </div>
 
             <div class="card">
@@ -201,7 +205,7 @@
             </div>
 
             <div class="card">
-                <p id="probDisplay">Shows probability</p> 
+                <p id="probDisplay">Shows probability</p>
             </div>
 
             <div class="back-button" id="back-button-to-rank">

@@ -2,6 +2,7 @@
 
 //button on each page
 //suite-select
+backButtonToWhose= document.getElementById("back-button-to-whose")
 nextButtonToRank = document.getElementById("next-button-to-rank");
 //rank-select
 nextButtonToSum = document.getElementById("next-button-to-sum");
@@ -110,6 +111,15 @@ nextButtonToRank.addEventListener('click', function () {
         valueSelect.classList.add("stage");
     }
 });
+
+backButtonToWhose.addEventListener('click', function () {
+    whosePage.classList.add("stage");
+    whosePage.classList.remove("stage-hide");
+
+    suiteSelect.classList.remove("stage");
+    suiteSelect.classList.add("stage-hide");
+});
+
 
 //ValueSelectPage
 nextButtonToSum.addEventListener('click', function () {
